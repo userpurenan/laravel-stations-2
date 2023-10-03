@@ -322,7 +322,7 @@ class AdminMovieTest extends TestCase
         try {
             Movie::insert($data);
             $this->fail();
-        } catch (QueryException) {
+        } catch (QueryException $e) {
             $this->assertTrue(true);
         } catch (\Exception $e) {
             $this->fail($e->getMessage());

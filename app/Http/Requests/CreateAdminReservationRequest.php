@@ -26,7 +26,7 @@ class CreateAdminReservationRequest extends FormRequest
         return [
             'movie_id' => ['required'],
             'schedule_id' => ['required'],
-            'sheet_id' => ['required'],
+            'sheet_id' => ['required', 'unique:reservations' ],
             'name' => ['required'],
             'email' => ['required', 'email:strict,dns'],
         ];

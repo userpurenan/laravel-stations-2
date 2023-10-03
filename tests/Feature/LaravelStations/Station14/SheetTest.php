@@ -15,7 +15,7 @@ class SheetTest extends TestCase
 
     public function testSeedコマンドでマスターデータが作成されるか(): void
     {
-        $this->seed();
+        $this->seed('SheetSeeder');
         $this->assertEquals(Sheet::count(), 15);
     }
     public function test座席一覧画面に全ての座席が表示されるか(): void

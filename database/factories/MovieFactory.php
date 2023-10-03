@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Genre;
+use App\Models\Screen;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class MovieFactory extends Factory
@@ -13,12 +15,15 @@ class MovieFactory extends Factory
      */
     public function definition()
     {
-        return [
-            'title' => $this->faker->unique()->word,
-            'image_url' => $this->faker->imageUrl(),
-            'published_year' => $this->faker->year,
-            'description' => $this->faker->realText(20),
-            'is_showing' => $this->faker->boolean,
-        ];
+
+        return 
+        [
+            'title' => $this->faker->realText(10),
+            'image_url' => $this->faker->imageUrl(440, 280, 'movies', true),
+            'published_year'=>random_int(2000, 2023),
+            'is_showing'=>(bool)random_int(0, 1),
+            'description'=> $this->faker->realText(30),
+            'genre_id' => Genre::inRandomOrder()->first()->id,   
+         ];
     }
 }

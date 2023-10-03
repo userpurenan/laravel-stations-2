@@ -16,11 +16,12 @@ use Tests\TestCase;
  */
 class SheetTest extends TestCase
 {
-    use RefreshDatabase;
+     use RefreshDatabase;
 
     public function setUp(): void
     {
         parent::setUp();
+
         $this->seed();
     }
 

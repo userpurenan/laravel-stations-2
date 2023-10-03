@@ -16,7 +16,7 @@ use Tests\TestCase;
  */
 class AdminReservationTest extends TestCase
 {
-    use RefreshDatabase;
+     use RefreshDatabase;
 
     private int $genreId;
 
@@ -97,7 +97,7 @@ class AdminReservationTest extends TestCase
         $movieId = $this->createMovie('タイトル')->id;
         $scheduleId = $this->createSchedule($movieId)->id;
 
-        $response = $this->post('/admin/reservations', [
+        $response = $this->post('/admin/reservations/store', [
             'movie_id' => $movieId,
             'schedule_id' => $scheduleId,
             'sheet_id' => Sheet::first()->id,
@@ -111,7 +111,7 @@ class AdminReservationTest extends TestCase
     public function testRequiredバリデーションが設定されているか(): void
     {
         $this->assertReservationCount(0);
-        $response = $this->post('/admin/reservations', [
+        $response = $this->post('/admin/reservations/store', [
             'movie_id' => null,
             'schedule_id' => null,
             'sheet_id' => null,
